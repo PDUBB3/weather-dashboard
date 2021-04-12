@@ -36,13 +36,16 @@
           <!--search form-->
           <div>
             <h4 class="p-md-2">Search for a city</h4>
-            <form class="row row-cols lg-auto g-3 align-items-center">
+            <form
+              class="row row-cols lg-auto g-3 align-items-center"
+              id="search-by-city-form"
+            >
               <div class="col-12">
                 <div class="input-group">
                   <input
-                    type="email"
+                    type="text"
                     class="form-control"
-                    id="cityInput"
+                    id="city-input"
                     placeholder="Enter a city name"
                   />
                 </div>
@@ -55,7 +58,13 @@
               </div>
             </form>
           </div>
-          <div>ls cities go here</div>
+          <div class="my-4" id="searched-cities">
+            <ul class="list-group">
+              <li class="list-group-item">London</li>
+              <li class="list-group-item">Leeds</li>
+              <li class="list-group-item">Manchester</li>
+            </ul>
+          </div>
         </div>
         <!-- cards-->
         <div class="col-md-3 col-sm-12">Cards</div>
