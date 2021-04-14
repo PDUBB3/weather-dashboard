@@ -1,0 +1,8 @@
+.weather-icon-image {
+  width: 64px;
+}
+
+.forecast-card {
+  width: 12rem;
+  background-color: #307bff;
+}

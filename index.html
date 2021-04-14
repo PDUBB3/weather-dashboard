@@ -31,26 +31,23 @@
     </header>
     <!-- top container-->
     <main class="container-fluid">
-      <div class="row px-3">
+      <div class="row">
+        <!-- list of cities from local storage -->
         <div class="col-md-3 col-sm-12 bg-light">
-          <!--search form-->
+          <!-- Search form component -->
           <div>
             <h4 class="p-md-2">Search for a city</h4>
-            <form
-              class="row row-cols lg-auto g-3 align-items-center"
-              id="search-by-city-form"
-            >
+            <form class="row row-cols-lg-auto g-3 align-items-center">
+              <!-- input component -->
               <div class="col-12">
-                <div class="input-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="city-input"
-                    placeholder="Enter a city name"
-                  />
-                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city-input"
+                  placeholder="Enter a city name"
+                />
               </div>
-
+              <!-- submit button component -->
               <div class="col-12">
                 <button type="submit" class="btn btn-primary">
                   <i class="fas fa-search"></i>
@@ -58,16 +55,98 @@
               </div>
             </form>
           </div>
-          <div class="my-4" id="searched-cities">
+          <!-- List group of cities -->
+          <div class="py-2">
             <ul class="list-group">
-              <li class="list-group-item">London</li>
-              <li class="list-group-item">Leeds</li>
+              <li class="list-group-item">Leicester</li>
               <li class="list-group-item">Manchester</li>
+              <li class="list-group-item">Birmingham</li>
+              <li class="list-group-item">Leeds</li>
+              <li class="list-group-item">Bradford</li>
             </ul>
           </div>
         </div>
-        <!-- cards-->
-        <div class="col-md-3 col-sm-12">Cards</div>
+        <!-- current card and forecast cards -->
+        <div class="col-md-9 col-sm-12" id="weather-cards">
+          <div class="row">
+            <div class="col-12">
+              <h5>5-Day Forecast</h5>
+              <!-- flex container for forecast cards -->
+              <div class="d-flex flex-wrap justify-content-between">
+                <!-- +1 day card -->
+                <div class="card text-white text-center forecast-card">
+                  <div class="card-body">
+                    <h6 class="card-title">8/16/2019</h6>
+                    <div>
+                      <img
+                        src="http://openweathermap.org/img/wn/10d@2x.png"
+                        class="weather-icon-image"
+                      />
+                    </div>
+                    <p class="card-text">Temp: 86.84 &deg; F</p>
+                    <p class="card-text">Humidity: 43%</p>
+                  </div>
+                </div>
+                <!-- +1 day card -->
+                <div class="card text-white text-center forecast-card">
+                  <div class="card-body">
+                    <h6 class="card-title">8/16/2019</h6>
+                    <div>
+                      <img
+                        src="http://openweathermap.org/img/wn/10d@2x.png"
+                        class="weather-icon-image"
+                      />
+                    </div>
+                    <p class="card-text">Temp: 86.84 &deg; F</p>
+                    <p class="card-text">Humidity: 43%</p>
+                  </div>
+                </div>
+                <!-- +1 day card -->
+                <div class="card text-white text-center forecast-card">
+                  <div class="card-body">
+                    <h6 class="card-title">8/16/2019</h6>
+                    <div>
+                      <img
+                        src="http://openweathermap.org/img/wn/10d@2x.png"
+                        class="weather-icon-image"
+                      />
+                    </div>
+                    <p class="card-text">Temp: 86.84 &deg; F</p>
+                    <p class="card-text">Humidity: 43%</p>
+                  </div>
+                </div>
+                <!-- +1 day card -->
+                <div class="card text-white text-center forecast-card">
+                  <div class="card-body">
+                    <h6 class="card-title">8/16/2019</h6>
+                    <div>
+                      <img
+                        src="http://openweathermap.org/img/wn/10d@2x.png"
+                        class="weather-icon-image"
+                      />
+                    </div>
+                    <p class="card-text">Temp: 86.84 &deg; F</p>
+                    <p class="card-text">Humidity: 43%</p>
+                  </div>
+                </div>
+                <!-- +1 day card -->
+                <div class="card text-white text-center forecast-card">
+                  <div class="card-body">
+                    <h6 class="card-title">8/16/2019</h6>
+                    <div>
+                      <img
+                        src="http://openweathermap.org/img/wn/10d@2x.png"
+                        class="weather-icon-image"
+                      />
+                    </div>
+                    <p class="card-text">Temp: 86.84 &deg; F</p>
+                    <p class="card-text">Humidity: 43%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <!-- -->
