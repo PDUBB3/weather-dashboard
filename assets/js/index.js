@@ -31,4 +31,11 @@ const onReady = () => {
   renderCurrentDayCard();
 };
 
+const onSubmit = (event) => {
+  event.preventDefault();
+
+  const cityName = $("#city-input").val();
+};
+
+$("#search-form").on("submit", onSubmit);
 $(document).ready(onReady);
