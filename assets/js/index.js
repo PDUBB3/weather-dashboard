@@ -51,18 +51,62 @@ const renderCurrentDayCard = (data) => {
   parentContainer.append(currentDayCard);
 };
 
+const renderForecastCards = (data) => {
+  const h5 = $("<h5>").text("5-Day Forecast");
+  const container = $("<div>").addClass(
+    "d-flex flex-wrap justify-content-between"
+  );
+  const col = $("<div>").addClass("col-12");
+  const row = $("<div>").addClass("row");
+
+  h5.appendTo(col);
+  container.appendTo(col);
+  col.appendTo(row);
+
+  $("#weather-cards").append(row);
+
+  const renderForecastCard = (data) => {
+    console.log(data);
+    const date = moment.unix(data.dt).format("MM/DD/YYYY");
+    const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+    const temperature = data.temp.day;
+    const humidity = data.humidity;
+
+    const forecastCard = $(`<div class="card text-white text-center forecast-card">
+    <div class="card-body">
+      <h6 class="card-title">${date}</h6>
+      <div>
+        <img
+          src="${iconUrl}"
+          class="weather-icon-image"
+        />
+      </div>
+      <p class="card-text">Temp: ${temperature} &deg; F</p>
+      <p class="card-text">Humidity: ${humidity}%</p>
+    </div>
+  </div>`);
+
+    forecastCard.appendTo(container);
+  };
+
+  data.forEach(renderForecastCard);
+};
+
 const renderAllCards = async (cityName) => {
   const currentDayUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`;
   const currentDayResponse = await fetchData(currentDayUrl);
 
   const forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${currentDayResponse.coord.lat}&lon=${currentDayResponse.coord.lon}&exclude=minutely,hourly&units=metric&appid=${API_KEY}`;
   const forecastResponse = await fetchData(forecastUrl);
-
   const currentDayData = getCurrentDayData(
     forecastResponse,
     currentDayResponse.name
   );
+
+  $("#weather-cards").empty();
+
   renderCurrentDayCard(currentDayData);
+  renderForecastCards(forecastResponse.daily);
 };
 
 const onReady = () => {};
