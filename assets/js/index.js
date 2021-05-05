@@ -1,5 +1,15 @@
 const API_KEY = "60b4fb66103f9e3c6f93920a7d7f1377";
 
+const getFromLocalStorage = () => {
+  const localStorageData = JSON.parse(localStorage.getItem("cities"));
+
+  if (localStorageData === null) {
+    return [];
+  } else {
+    return localStorageData;
+  }
+};
+
 const fetchData = async (url) => {
   try {
     const response = await fetch(url);
@@ -66,7 +76,6 @@ const renderForecastCards = (data) => {
   $("#weather-cards").append(row);
 
   const renderForecastCard = (data) => {
-    console.log(data);
     const date = moment.unix(data.dt).format("MM/DD/YYYY");
     const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
     const temperature = data.temp.day;
@@ -89,7 +98,9 @@ const renderForecastCards = (data) => {
     forecastCard.appendTo(container);
   };
 
-  data.forEach(renderForecastCard);
+  const fiveDayForecast = data.slice(1, 6);
+
+  fiveDayForecast.forEach(renderForecastCard);
 };
 
 const renderAllCards = async (cityName) => {
@@ -109,12 +120,54 @@ const renderAllCards = async (cityName) => {
   renderForecastCards(forecastResponse.daily);
 };
 
-const onReady = () => {};
+const getDataByCityName = async (event) => {
+  const target = $(event.target);
+  if (target.is("li")) {
+    const cityName = target.data("city");
+
+    renderAllCards(cityName);
+  }
+};
+
+const renderCitiesFromLocalStorage = () => {
+  $("#searched-cities").empty();
+
+  const cities = getFromLocalStorage();
+
+  const ul = $("<ul>").addClass("list-group");
+
+  const appendListItemToUl = (city) => {
+    const li = $("<li>")
+      .addClass("list-group-item")
+      .attr("data-city", city)
+      .text(city);
+
+    ul.append(li);
+  };
+
+  cities.forEach(appendListItemToUl);
+
+  ul.on("click", getDataByCityName);
+
+  $("#searched-cities").append(ul);
+};
+
+const onReady = () => {
+  renderCitiesFromLocalStorage();
+};
 
 const onSubmit = (event) => {
   event.preventDefault();
 
   const cityName = $("#city-input").val();
+
+  const cities = getFromLocalStorage();
+
+  cities.push(cityName);
+
+  localStorage.setItem("cities", JSON.stringify(cities));
+
+  renderCitiesFromLocalStorage();
 
   renderAllCards(cityName);
 };
