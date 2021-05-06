@@ -15,7 +15,11 @@ Click [here](https://pdubb3.github.io/weather-dashboard/) to view GIT repo
 
 ## Description
 
-As a traveler I
+In this project, I have created a weather dashboard by using the openweathermap API. This Api allows the weather data to be retrieved and displayed onto the weather dashboard once a city in searched by the user via the search bar.
+
+I have used HTML, Javascript and CSS to create this weather dashboard to allow the user to search a city in the search bar, display the current days weather and also the weather for the next 5 days.
+
+The cities the user searches is also saved within local storage and displayed on the search bar so the user can click onto their previously searched cities.
 
 ## What did we do?
 
@@ -53,3 +57,5 @@ code .
 ![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./assets/img/06-server-side-apis-homework-demo.png)
 
 ### Screenshot showing weather dashboard created
+
+![The weather app dashboard I have created](./assets/img/weatherapp.png)
