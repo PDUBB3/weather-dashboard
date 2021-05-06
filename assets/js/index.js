@@ -27,7 +27,7 @@ const getCurrentDayData = (response, cityName) => {
     humidity: response.current.humidity,
     windSpeed: response.current.wind_speed,
     date: moment.unix(response.current.dt).format("MM/DD/YYYY"),
-    iconURL: `http://openweathermap.org/img/wn/${response.current.weather[0].icon}@2x.png`,
+    iconURL: `https://openweathermap.org/img/wn/${response.current.weather[0].icon}@2x.png`,
     uvi: response.current.uvi,
   };
 };
@@ -77,7 +77,7 @@ const renderForecastCards = (data) => {
 
   const renderForecastCard = (data) => {
     const date = moment.unix(data.dt).format("MM/DD/YYYY");
-    const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+    const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
     const temperature = data.temp.day;
     const humidity = data.humidity;
 
@@ -104,7 +104,7 @@ const renderForecastCards = (data) => {
 };
 
 const renderAllCards = async (cityName) => {
-  const currentDayUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`;
+  const currentDayUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`;
   const currentDayResponse = await fetchData(currentDayUrl);
 
   const forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${currentDayResponse.coord.lat}&lon=${currentDayResponse.coord.lon}&exclude=minutely,hourly&units=metric&appid=${API_KEY}`;
