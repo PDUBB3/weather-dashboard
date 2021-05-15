@@ -42,7 +42,7 @@ include the following elements into our weather dashboard
 
 ```
 git clone git@github.com:PDUBB3/weather-dashboard.git
-cd code-quiz
+cd weather-dashboard
 code .
 ```
 
